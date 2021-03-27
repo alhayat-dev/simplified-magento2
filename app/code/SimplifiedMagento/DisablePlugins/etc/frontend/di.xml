@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="before-set-name"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution" sortOrder="10" disabled="true"/>
+    </type>
+
+    <type name="SimplifiedMagento\FirstModule\Controller\Page\HelloWorld">
+        <plugin name="plugin_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution" sortOrder="10" disabled="true"/>
+
+        <plugin name="plugin2_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution2" sortOrder="20" disabled="true" />
+
+        <plugin name="plugin3_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution3" sortOrder="30" disabled="true"/>
+
+    </type>
+</config>

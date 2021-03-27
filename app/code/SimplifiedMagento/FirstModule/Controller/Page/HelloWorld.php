@@ -36,8 +36,11 @@ class HelloWorld implements ActionInterface
 
     public function execute()
     {
+        /*
         $pencil = $this->pencilFactory->create(['name' => 'Mudasser Hayat', 'school' => 'Intermediate']);
         var_dump($pencil);
+        */
+
         /*
         echo $this->pencilInterface->getPencilType() . PHP_EOL;
         echo get_class($this->pencilInterface);
@@ -58,5 +61,7 @@ class HelloWorld implements ActionInterface
         $student = $objectManager->create('SimplifiedMagento\FirstModule\Model\Student');
         var_dump($student);
         */
+
+        echo "Main Function" . PHP_EOL;
     }
 }

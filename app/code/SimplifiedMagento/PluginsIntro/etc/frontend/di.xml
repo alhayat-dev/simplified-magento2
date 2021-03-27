@@ -10,4 +10,16 @@
         <plugin name="before-set-name"
                 type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution" sortOrder="10"/>
     </type>
+
+    <type name="SimplifiedMagento\FirstModule\Controller\Page\HelloWorld">
+        <plugin name="plugin_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution" sortOrder="10"/>
+
+        <plugin name="plugin2_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution2" sortOrder="20"/>
+
+        <plugin name="plugin3_on_execute"
+                type="SimplifiedMagento\PluginsIntro\Plugin\PluginSolution3" sortOrder="30"/>
+
+    </type>
 </config>

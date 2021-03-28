@@ -21,5 +21,6 @@ class LogTextAtCheckout implements ObserverInterface
         $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
         $logger = new \Zend\Log\Logger();
         $logger->addWriter($writer);
+        $logger->info('Your text message');
     }
 }

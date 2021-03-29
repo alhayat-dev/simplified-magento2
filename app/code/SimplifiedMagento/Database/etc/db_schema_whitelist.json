@@ -1,0 +1,18 @@
+{
+    "affiliate_members": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "address": true,
+            "status": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "index": {
+            "AFFILIATE_MEMBERS_ENTITY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

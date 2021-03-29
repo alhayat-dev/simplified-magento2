@@ -16,4 +16,17 @@
             </argument>
         </arguments>
     </type>
+
+    <type name="Magento\Framework\App\RouterList">
+        <arguments>
+            <argument name="routerList" xsi:type="array">
+                <item name="custom" xsi:type="array">
+                    <item name="class" xsi:type="string">SimplifiedMagento\RequestFlow\Controller\Page\Router</item>
+                    <item name="disable" xsi:type="boolean">false</item>
+                    <item name="sortOrder" xsi:type="string">61</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
 </config>

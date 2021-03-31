@@ -5,16 +5,15 @@
  */
 declare(strict_types=1);
 
-namespace SimplifiedMagento\Database\Setup\Patch\Data;
+namespace SimplifiedMagento\AddColumnInExistingTable\Setup\Patch\Data;
 
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 
 /**
 * Patch is mechanism, that allows to do atomic upgrade data changes
 */
-class AddAffiliateMembers implements DataPatchInterface, PatchRevertableInterface
+class AddMembersPhoneData implements DataPatchInterface
 {
     /**
      * @var ModuleDataSetupInterface $moduleDataSetup
@@ -52,21 +51,17 @@ class AddAffiliateMembers implements DataPatchInterface, PatchRevertableInterfac
     {
         return [
             [
-                'name' => 'Bob',
-                'address' => 'No 10, Dubai',
-                'status' => true
-            ],
-            [
-                'name' => 'Alex',
-                'address' => 'No 11, Dubai',
-                'status' => true
+                'name' => 'Mudasser',
+                'address' => 'No 12, Dubai',
+                'status' => false,
+                'phone_number' => '00923316668834'
             ]
         ];
     }
     /**
      * @inheritdoc
      */
-    public function getAliases()
+    public function getAliases(): array
     {
         return [];
     }
@@ -74,15 +69,8 @@ class AddAffiliateMembers implements DataPatchInterface, PatchRevertableInterfac
     /**
      * @inheritdoc
      */
-    public static function getDependencies()
+    public static function getDependencies(): array
     {
         return [];
-    }
-
-    public function revert()
-    {
-        $this->moduleDataSetup->getConnection()->startSetup();
-        // TODO: Implement revert() method.
-        $this->moduleDataSetup->getConnection()->endSetup();
     }
 }

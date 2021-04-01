@@ -37,16 +37,19 @@ class Index implements ActionInterface
 
     public function execute()
     {
+
+
         $member = $this->affiliateMemberFactory->create();
-        $this->affiliateMemberResourceModel->load($member, 5);
+        $this->affiliateMemberResourceModel->load($member, 1);
+        var_dump($member->getData());
 
-        $members = $this->getMembers();
+//        $members = $this->getMembers();
 
-        $collection = $this->collectionFactory->create();
-        $data = $collection->addFieldToSelect('*');
-        foreach ($data as $datum) {
-            print_r($datum->getData());
-        }
+//        $collection = $this->collectionFactory->create();
+//        $data = $collection->addFieldToSelect('*');
+//        foreach ($data as $datum) {
+//            print_r($datum->getData());
+//        }
         /*
         $member->setAddress("new adddress 1");
         try {

@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace SimplifiedMagento\Database\Api\Data;
 
+use Magento\Framework\Api\ExtensibleDataInterface;
+
 /**
  * @method getData()
  * @method setData(int|string $key, mixed $value)
  */
-interface AffiliateMemberInterface
+interface AffiliateMemberInterface extends ExtensibleDataInterface
 {
     const NAME = 'name';
     const ADDRESS = 'address';
@@ -90,4 +92,14 @@ interface AffiliateMemberInterface
      */
     public function setCreatedAt($creationTime);
 
+    /**
+     * @return \SimplifiedMagento\Database\Api\Data\AffiliateMemberExtensionInterface|null
+     */
+    public function getExtensionAttributes();
+
+    /**
+     * @param AffiliateMemberExtensionInterface $affiliateMemberExtension
+     * @return $this
+     */
+    public function setExtensionAttributes(\SimplifiedMagento\Database\Api\Data\AffiliateMemberExtensionInterface $affiliateMemberExtension);
 }

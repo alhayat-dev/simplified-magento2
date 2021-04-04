@@ -3,10 +3,11 @@
 namespace SimplifiedMagento\Database\Model;
 
 use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\Exception\CouldNotDeleteException;
 use SimplifiedMagento\Database\Api\AffiliateMemberRepositoryInterface;
+use SimplifiedMagento\Database\Api\Data;
 use SimplifiedMagento\Database\Model\ResourceModel\AffiliateMember as AffiliateMemberResourceModel;
 use SimplifiedMagento\Database\Model\ResourceModel\AffiliateMember\CollectionFactory;
-use SimplifiedMagento\Database\Model\AffiliateMemberFactory;
 
 class AffiliateMemberRepository implements AffiliateMemberRepositoryInterface
 {
@@ -71,25 +72,6 @@ class AffiliateMemberRepository implements AffiliateMemberRepositoryInterface
     }
 
     /**
-     * @param $id
-     * @throws \Exception
-     */
-    public function deleteById($id)
-    {
-        return $this->delete($this->getById($id));
-    }
-
-    public function delete($memberId)
-    {
-        $member = $this->affiliateMemberFactory->create();
-        $this->affiliateMemberResourceModel->load($member, $memberId);
-        if (!$member->getId()) {
-            throw new NoSuchEntityException(__('The member with the "%1" ID doesn\'t exist.', $memberId));
-        }
-        return $member;
-    }
-
-    /**
      * Load Block data by given Block Identity
      *
      * @param $id
@@ -105,5 +87,17 @@ class AffiliateMemberRepository implements AffiliateMemberRepositoryInterface
         return $member;
     }
 
-
+    /**
+     * @param $memberId
+     * @return bool
+     * @throws \Exception
+     */
+    public function delete($memberId)
+    {
+        $member = $this->affiliateMemberFactory->create()->load($memberId);
+        $member->delete();
+        return "test";
+//        $this->affiliateMemberResourceModel->load($member, $memberId);
+//        $this->affiliateMemberResourceModel->delete($member);
+    }
 }

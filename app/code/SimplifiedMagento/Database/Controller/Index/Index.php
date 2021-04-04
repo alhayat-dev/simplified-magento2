@@ -6,6 +6,7 @@ namespace SimplifiedMagento\Database\Controller\Index;
 
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
+use SimplifiedMagento\Database\Api\AffiliateMemberRepositoryInterface;
 use SimplifiedMagento\Database\Model\AffiliateMemberFactory;
 use SimplifiedMagento\Database\Model\ResourceModel\AffiliateMember as AffiliateMemberResourceModel;
 use SimplifiedMagento\Database\Model\ResourceModel\AffiliateMember\CollectionFactory;
@@ -24,25 +25,31 @@ class Index implements ActionInterface
      * @var CollectionFactory
      */
     private CollectionFactory $collectionFactory;
+    /**
+     * @var AffiliateMemberRepositoryInterface
+     */
+    private AffiliateMemberRepositoryInterface $affiliateMemberRepository;
 
     public function __construct(
         AffiliateMemberFactory $affiliateMemberFactory,
         AffiliateMemberResourceModel $affiliateMemberResourceModel,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        AffiliateMemberRepositoryInterface $affiliateMemberRepository
     ) {
         $this->affiliateMemberFactory = $affiliateMemberFactory;
         $this->affiliateMemberResourceModel = $affiliateMemberResourceModel;
         $this->collectionFactory = $collectionFactory;
+        $this->affiliateMemberRepository = $affiliateMemberRepository;
     }
 
     public function execute()
     {
-
-
-        $member = $this->affiliateMemberFactory->create();
-        $this->affiliateMemberResourceModel->load($member, 1);
-        var_dump($member->getData());
-
+        $memberId = 3;
+        if ($memberId) {
+            $member = $this->affiliateMemberFactory->create();
+            $this->affiliateMemberResourceModel->load($member, $memberId);
+            $this->affiliateMemberRepository->delete($member);
+        }
 //        $members = $this->getMembers();
 
 //        $collection = $this->collectionFactory->create();

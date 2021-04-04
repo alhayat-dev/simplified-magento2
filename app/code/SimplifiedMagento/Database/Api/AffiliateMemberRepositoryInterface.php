@@ -24,13 +24,8 @@ interface AffiliateMemberRepositoryInterface
     public function saveAffiliateMember(\SimplifiedMagento\Database\Api\Data\AffiliateMemberInterface $member);
 
     /**
-     * Delete member by ID.
-     *
-     * @param $id
-     * @return bool true on success
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param $memberId
+     * @return void
      */
-    public function deleteById($id);
-
+    public function delete($memberId);
 }

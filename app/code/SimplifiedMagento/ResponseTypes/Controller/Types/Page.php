@@ -31,6 +31,7 @@ class Page implements ActionInterface
 
     public function execute()
     {
+        $name = "Mudasser";
         return $this->pageFactory->create();
     }
 }

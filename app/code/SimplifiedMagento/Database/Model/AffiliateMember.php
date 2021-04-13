@@ -5,12 +5,17 @@ declare(strict_types=1);
 namespace SimplifiedMagento\Database\Model;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
-use Magento\Framework\Model\AbstractModel;
 use SimplifiedMagento\Database\Api\Data\AffiliateMemberExtensionInterface;
 use SimplifiedMagento\Database\Api\Data\AffiliateMemberInterface;
 
 class AffiliateMember extends AbstractExtensibleModel implements AffiliateMemberInterface
 {
+    /**#@+
+     * Block's statuses
+     */
+    const STATUS_ENABLED = 1;
+    const STATUS_DISABLED = 0;
+
     /**
      * Initialize resource model
      *
@@ -144,5 +149,15 @@ class AffiliateMember extends AbstractExtensibleModel implements AffiliateMember
     public function setExtensionAttributes(AffiliateMemberExtensionInterface $affiliateMemberExtension)
     {
         return $this->_setExtensionAttributes($affiliateMemberExtension);
+    }
+
+    /**
+     * Prepare member's statuses.
+     *
+     * @return array
+     */
+    public function getAvailableStatuses()
+    {
+        return [self::STATUS_ENABLED => __('Enabled'), self::STATUS_DISABLED => __('Disabled')];
     }
 }
